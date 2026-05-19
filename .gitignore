@@ -1,0 +1,6 @@
+﻿.venv/
+static
+__pycache__/
+*.pyc
+automato_resul.png
+.vscode/

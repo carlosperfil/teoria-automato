@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de Autômatos</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@700;800&display=swap');
+  :root { --bg:#0d0f14; --surface:#13161e; --card:#1a1e29; --border:#252a38; --accent:#4f8ef7; --green:#34d399; --red:#f87171; --text:#e2e8f0; --muted:#64748b; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'JetBrains Mono',monospace; background:var(--bg); color:var(--text); min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:40px 48px; text-align:center; max-width:480px; width:90%; }
+  .icon { font-size:56px; margin-bottom:16px; }
+  h1 { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; margin-bottom:8px; }
+  .word { font-size:28px; font-weight:700; letter-spacing:.08em; margin:16px 0; padding:12px 24px; border-radius:10px; background:var(--bg); border:1px solid var(--border); }
+  .result { font-size:13px; padding:10px 20px; border-radius:8px; margin-top:12px; }
+  .accepted { background:rgba(52,211,153,.12); border:1px solid rgba(52,211,153,.3); color:var(--green); }
+  .rejected { background:rgba(248,113,113,.12); border:1px solid rgba(248,113,113,.3); color:var(--red); }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:8px; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; cursor:pointer; border:none; text-decoration:none; margin-top:24px; background:var(--border); color:var(--text); transition:all .15s; }
+  .btn:hover { background:#2e3447; }
+</style>
+</head>
+<body>
+<div class="card">
+  {% if 'aceita' in resultado.lower() %}
+  <div class="icon"><i class="fa-solid fa-check"></i></div>
+  {% else %}
+  <div class="icon"><i class="fa-solid fa-xmark"></i></div>
+  {% endif %}
+  <h1>Resultado da Simulação</h1>
+  <div class="word">"{{ palavra }}"</div>
+  <div class="result {% if 'aceita' in resultado.lower() %}accepted{% else %}rejected{% endif %}">
+    {{ resultado }}
+  </div>
+  <a href="javascript:history.back()" class="btn">← Voltar</a>
+</div>
+</body>
+</html>
