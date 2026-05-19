@@ -1,0 +1,29 @@
+@startuml
+
+class AutomatoFinito {
+    - estados: Set[String]
+    - alfabeto: Set[String]
+    - transicoes: Map[(String, String), Any]
+    - estado_inicial: String
+    - estados_aceitacao: Set[String]
+    --
+    + desenhar(nome_arquivo: String): String
+}
+
+class AFN {
+    + converter_para_afd(): AFD
+    + aceitar_palavra(palavra: String): Boolean
+    + verificar_equivalencia(afd: AFD): Boolean
+    + gerar_palavras_iter(alfabeto: List[String], tamanho_max: Int): List[String]
+}
+
+class AFD {
+    + aceita_palavra(palavra: String): Boolean
+    + minimizar(): AFD
+    + desenhar(nome_arquivo: String): String
+}
+
+AutomatoFinito <|-- AFN
+AutomatoFinito <|-- AFD
+
+@enduml
