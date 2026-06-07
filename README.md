@@ -14,7 +14,9 @@
 
 ## Resumo
 
-Este relatório descreve o desenvolvimento de um sistema web para manipulação de autômatos finitos e gramáticas regulares. O sistema permite entrada visual (desenho interativo), entrada textual de AFN via formulário, e entrada de Gramáticas Regulares, realizando conversões, simulações e minimizações automaticamente com visualização gráfica dos autômatos gerados.
+Este sistema web foi desenvolvido para manipulação de autômatos finitos e gramáticas regulares. O sistema permite entrada visual (desenho interativo), entrada textual de AFN via formulário, e entrada de Gramáticas Regulares, realizando conversões, simulações e minimizações automaticamente com visualização gráfica dos autômatos gerados.
+
+> **Nota:** O detalhamento metodológico completo do trabalho e do funcionamento do sistema pode ser consultado no documento [relatório_do_simulador.pdf](./relatório_do_simulador.pdf).
 
 ---
 
@@ -115,6 +117,8 @@ Exibe se AFN e AFD são equivalentes, com badge colorido.
 
 ## Diagrama de Classes (UML)
 
+> **Nota:** Para melhor visualização e detalhes das interações, consulte o diagrama original completo em PDF: [UML-Simulador.drawio.pdf](./UML-Simulador.drawio.pdf).
+
 ```
 ┌──────────────────────────────┐
 │       AutomatoFinito         │
@@ -138,7 +142,7 @@ Exibe se AFN e AFD são equivalentes, com badge colorido.
 │+ aceita_    │  │+ epsilon_fechamento(estados): froz.  │
 │  palavra()  │  │+ converter_para_afd(): AFD           │
 │+ minimizar()│  │+ aceitar_palavra(palavra): bool      │
-│+ _estados_  │  │+ verificar_equivalencia(afd): bool   │
+│- _estados_  │  │+ verificar_equivalencia(afd): bool   │
 │  acessiveis │  │+ desenhar(nome): str                 │
 └─────────────┘  └──────────────────────────────────────┘
 
@@ -258,27 +262,32 @@ Gera todas as palavras do alfabeto real até comprimento 5 e compara as aceitaç
 
 ### 1. Clone o repositório
 
+```bash
+git clone https://github.com/carlosperfil/teoria-automato.git
+cd teoria-automato
+```
+
 ### 2. Crie e ative um ambiente virtual (opcional, mas recomendado)
 
 #### Windows
 
-
+```bash
 python -m venv venv
 venv\Scripts\activate
-
+```
 
 #### macOS e Linux
 
-
+```bash
 python3 -m venv venv
 source venv/bin/activate
-
+```
 
 ### 3. Instale as dependências
 
-
+```bash
 pip install -r requirements.txt
-
+```
 
 ### 4. Instale o Graphviz
 
@@ -290,21 +299,22 @@ Baixe e instale o Graphviz a partir do [site oficial](https://graphviz.gitlab.io
 
 #### macOS
 
-
+```bash
 brew install graphviz
-
+```
 
 #### Linux
 
-
+```bash
 sudo apt-get install graphviz
-
+```
 
 ### 5. Execute o projeto
 
 No terminal, execute:
 
+```bash
 python main.py
+```
 
-
-O servidor Flask será iniciado em \`http://127.0.0.1:5001\`.
+O servidor Flask será iniciado em `http://127.0.0.1:5001`.
